@@ -1,138 +1,516 @@
+> z:
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Eka Bayu</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eka Bayu Adi Prassetyo</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    :root {
+      --blue-deep: #0a1628;
+      --blue-mid: #1a3a6b;
+      --blue-accent: #2563eb;
+      --blue-light: #60a5fa;
+      --white: #ffffff;
+      --gray: #94a3b8;
+    }
 
-    <!-- ICON -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--blue-deep);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(37,99,235,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(96,165,250,0.12) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 6vw;
+      backdrop-filter: blur(16px);
+      background: rgba(10,22,40,0.7);
+      border-bottom: 1px solid rgba(37,99,235,0.15);
+    }
+
+    .nav-logo {
+      font-size: 1.3rem;
+      color: var(--blue-light);
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--blue-light); }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 6vw 4rem;
+      gap: 4rem;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(37,99,235,0.35);
+      color: var(--blue-light);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--white);
+    }
+
+    .hero-name span { color: var(--blue-light); }
+
+    .hero-sub {
+      margin-top: 1.2rem;
+      font-size: 1.05rem;
+      color: var(--gray);
+      font-weight: 300;
+      max-width: 420px;
+      line-height: 1.7;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-primary { background: var(--blue-accent); color: #fff; border: none; }
+    .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--blue-light); border: 1px solid rgba(96,165,250,0.4); }
+    .btn-outline:hover { border-color: var(--blue-light); transform: translateY(-2px); }
+
+    .hero-photo { flex-shrink: 0; }
+
+    .photo-frame {
+      width: 260px;
+      height: 320px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(37,99,235,0.3);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid rgba(96,165,250,0.25);
+      border-radius: 24px;
+    }
+
+> z:
+.photo-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: var(--blue-accent);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 20px rgba(37,99,235,0.5);
+      z-index: 2;
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 6vw;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 3rem;
+    }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .bio-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(96,165,250,0.12);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .bio-card:hover {
+      background: rgba(37,99,235,0.1);
+      border-color: rgba(96,165,250,0.3);
+      transform: translateY(-4px);
+    }
+
+    .bio-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+    .bio-label { font-size: 0.72rem; color: var(--gray); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .bio-value { font-size: 1rem; font-weight: 500; color: var(--white); }
+
+    .edu-timeline { position: relative; padding-left: 2rem; }
+
+    .edu-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue-accent), transparent);
+      border-radius: 2px;
+    }
+
+    .edu-item { position: relative; margin-bottom: 2.5rem; }
+
+    .edu-item::before {
+      content: '';
+      position: absolute;
+      left: -2.45rem; top: 8px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--blue-accent);
+      border: 2px solid var(--blue-deep);
+      box-shadow: 0 0 12px rgba(37,99,235,0.6);
+    }
+
+    .edu-level { font-size: 0.72rem; color: var(--blue-light); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .edu-name { font-size: 1.15rem; font-weight: 600; color: var(--white); }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skill-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(96,165,250,0.12);
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .skill-card:hover {
+      background: rgba(37,99,235,0.1);
+      border-color: rgba(96,165,250,0.3);
+      transform: translateY(-3px);
+    }
+
+    .skill-name { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
+
+    .skill-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--blue-accent), var(--blue-light));
+      border-radius: 999px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(96,165,250,0.12);
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      text-decoration: none;
+      color: var(--white);
+      transition: all 0.3s;
+    }
+
+    .contact-card:hover {
+      background: rgba(37,99,235,0.12);
+      border-color: rgba(96,165,250,0.35);
+      transform: translateY(-3px);
+    }
+
+> z:
+.contact-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(37,99,235,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .contact-label { font-size: 0.72rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+    .contact-value { font-size: 0.95rem; font-weight: 500; }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(37,99,235,0.3), transparent);
+      margin: 0 6vw;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 700px) {
+      .hero { flex-direction: column-reverse; text-align: center; padding-top: 7rem; }
+      .hero-sub { margin: 1rem auto 0; }
+      .hero-btns { justify-content: center; }
+      .photo-frame { width: 180px; height: 220px; font-size: 4rem; }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-    <h2 class="logo">Eka Bayu Adi Prassetyo</h2>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#project">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
+  <nav>
+    <div class="nav-logo">EBA</div>
+    <ul class="nav-links">
+      <li><a href="#biodata">Biodata</a></li>
+      <li><a href="#pendidikan">Pendidikan</a></li>
+      <li><a href="#skill">Skill</a></li>
+      <li><a href="#kontak">Kontak</a></li>
     </ul>
-</nav>
+  </nav>
 
-<!-- HOME -->
-<section class="home" id="home">
-    <div class="home-text fade-in">
-        <h1>Hi, I'm <span>Eka Bayu</span></h1>
-        <h2 class="typing">PRESDEN MEXICO</h2>
-        <p>Saya mahasiswa yang tertarik pada dunia pemrograman dan pengembangan web.</p>
-        <br>
-        <div class="home-btn">
-            <a href="#" class="btn1">Hire Me</a>
-            <a href="#" class="btn2">Let's Talk</a>
-        </div>
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <div class="hero-tag">✦ Web Profile</div>
+      <h1 class="hero-name">Eka Bayu<br><span>Adi Prassetyo</span></h1>
+      <p class="hero-sub">Mahasiswa Teknik Informatika di STMIK Mercusuar. Tertarik dalam dunia pemrograman, pengembangan web, dan teknologi informasi.</p>
+      <div class="hero-btns">
+        <a href="#kontak" class="btn btn-primary">Hubungi Saya</a>
+        <a href="#biodata" class="btn btn-outline">Lihat Profil</a>
+      </div>
     </div>
-
-    <div class="home-img fade-in">
-        <img src="profile.jpg" alt="Foto Saya">
+    <div class="hero-photo">
+      <div class="photo-frame">
+        🧑‍💻
+        <div class="photo-badge">Teknik Informatika</div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- ABOUT -->
-<section class="about fade-in" id="about">
-    <h2 class="section-title">About Me</h2>
+  <div class="divider"></div>
 
-    <div class="about-container">
-        <div class="about-text">
-            <p>
-                Saya adalah mahasiswa yang memiliki minat besar dalam dunia
-                pemrograman, khususnya pengembangan website dan aplikasi.
-                dan saya bercita-cita menjadi seorang presiden italy, portugal, dan mexico
-                agar bisa menjadi gebong mafia ya tak terkalahkan
-            </p>
-        </div>
-
-        <div class="skills">
-            <div class="skill">
-                <p>HTML & CSS</p>
-                <div class="bar">
-                    <span class="progress html"></span>
-                </div>
-            </div>
-
-            <div class="skill">
-                <p>C++</p>
-                <div class="bar">
-                    <span class="progress c++"></span>
-                </div>
-            </div>
-
-            <div class="skill">
-                <p>MySQL</p>
-                <div class="bar"><span class="progress MySQL"></span></div>
-            </div>
-        </div>
+  <section id="biodata">
+    <div class="section-label">Tentang Saya</div>
+    <div class="section-title">Biodata Diri</div>
+    <div class="bio-grid">
+      <div class="bio-card">
+        <div class="bio-icon">👤</div>
+        <div class="bio-label">Nama Lengkap</div>
+        <div class="bio-value">Eka Bayu Adi Prassetyo</div>
+      </div>
+      <div class="bio-card">
+        <div class="bio-icon">📍</div>
+        <div class="bio-label">Tempat Lahir</div>
+        <div class="bio-value">Klaten</div>
+      </div>
+      <div class="bio-card">
+        <div class="bio-icon">🎂</div>
+        <div class="bio-label">Tanggal Lahir</div>
+        <div class="bio-value">16 Desember 2005</div>
+      </div>
+      <div class="bio-card">
+        <div class="bio-icon">🎓</div>
+        <div class="bio-label">Program Studi</div>
+        <div class="bio-value">Teknik Informatika</div>
+      </div>
+      <div class="bio-card">
+        <div class="bio-icon">🏫</div>
+        <div class="bio-label">Perguruan Tinggi</div>
+        <div class="bio-value">STMIK Mercusuar</div>
+      </div>
+      <div class="bio-card">
+        <div class="bio-icon">⚽</div>
+        <div class="bio-label">Hobi</div>
+        <div class="bio-value">Sepak Bola</div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- PROJECT -->
-<section class="project fade-in" id="project">
-    <h2 class="section-title">My Projects</h2>
+  <div class="divider"></div>
 
-    <div class="project-container">
-        <div class="project-card">
-            <h3>Aplikasi RT/RW</h3>
-            <p>Aplikasi pendataan warga menggunakan C++.</p>
-        </div>
+  <section id="pendidikan">
+    <div class="section-label">Riwayat</div>
+    <div class="section-title">Pendidikan</div>
+    <div class="edu-timeline">
+      <div class="edu-item">
+        <div class="edu-level">Sekolah Dasar</div>
+        <div class="edu-name">Jatibening 4</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-level">Sekolah Menengah Pertama</div>
 
-        <div class="project-card">
-            <h3>Database Koperasi</h3>
-            <p>Perancangan database lengkap dengan ERD.</p>
-        </div>
-
-        <div class="project-card">
-            <h3>Website Portfolio</h3>
-            <p>Membuat website portfolio menggunakan HTML & CSS.</p>
-        </div>
+> z:
+<div class="edu-name">SMPN 20 Bekasi</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-level">Sekolah Menengah Kejuruan</div>
+        <div class="edu-name">SMK Bina Insan Kamil</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-level">Perguruan Tinggi</div>
+        <div class="edu-name">STMIK Mercusuar — Teknik Informatika</div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- CONTACT -->
-<section class="contact fade-in" id="contact">
-    <h2 class="section-title">Contact Me</h2>
+  <div class="divider"></div>
 
-    <div class="contact-container">
-
-        <div class="contact-card">
-            <i class="fas fa-envelope"></i>
-            <h3>Email</h3>
-            <a href="mailto:Ekabayuadi16@email.com">Ekabayuadi16@email.com</a>
-        </div>
-
-        <div class="contact-card">
-            <i class="fab fa-instagram"></i>
-            <h3>Instagram</h3>
-            <a href="https://instagram.com/@stheuo_" target="_blank">@stheuo_</a>
-        </div>
-
-        <div class="contact-card">
-            <i class="fab fa-whatsapp"></i>
-            <h3>WhatsApp</h3>
-            <a href="https://wa.me/0881025402079" target="_blank">0881025402079</a>
-        </div>
-
+  <section id="skill">
+    <div class="section-label">Kemampuan</div>
+    <div class="section-title">Skill</div>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <div class="skill-name">HTML & CSS</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">C++</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">MySQL</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Java</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <p>© 2026 Eka Bayu Adi Prassetyo</p>
-</footer>
+  <div class="divider"></div>
+
+  <section id="kontak">
+    <div class="section-label">Hubungi</div>
+    <div class="section-title">Kontak & Media Sosial</div>
+    <div class="contact-grid">
+      <a href="https://wa.me/6288102540279" target="_blank" class="contact-card">
+        <div class="contact-icon">📱</div>
+        <div>
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value">0881025402079</div>
+        </div>
+      </a>
+      <a href="https://instagram.com/stheuo_" target="_blank" class="contact-card">
+        <div class="contact-icon">📸</div>
+        <div>
+          <div class="contact-label">Instagram</div>
+          <div class="contact-value">@stheuo_</div>
+        </div>
+      </a>
+      <a href="mailto:ekabayuadi16@gmail.com" class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">ekabayuadi16@gmail.com</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Eka Bayu Adi Prassetyo · Dibuat dengan ❤️</p>
+  </footer>
 
 </body>
 </html>
